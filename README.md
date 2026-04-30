@@ -17,7 +17,7 @@ The frontend is built to deliver a modern, highly interactive, and responsive us
 The backend serves as a robust API layer handling data persistence and complex AI generation logic.
 - **Framework:** Flask (Python)
 - **Database:** SQLite (managed via `db.py`)
-- **AI Inference:** Integrated with FarAI / Groq API (utilizing models like Qwen/Qwen3-8B) for chat streaming and educational content generation.
+- **AI Inference:** Integrated with Groq API for chat streaming and educational content generation.
 - **Features:** Secure endpoints for session management, topic mastery updates, and direct interaction with Large Language Models.
 
 ## Project Structure
