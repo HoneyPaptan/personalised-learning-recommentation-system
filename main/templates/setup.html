@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathMaster</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="setup-container">
+        <div class="setup-card">
+            <div class="setup-logo">
+                Math<span>Master</span>
+            </div>
+            <p class="setup-desc">
+                Adaptive math tutoring powered by AI
+            </p>
+            
+            <form id="setup-form">
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        class="input" 
+                        id="user-name"
+                        placeholder="Your name (optional)"
+                        autocomplete="off"
+                        style="text-align: center;"
+                    >
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                    Get Started
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('setup-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('user-name').value.trim();
+            
+            const res = await fetch('/setup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name })
+            });
+            
+            const data = await res.json();
+            if (data.success) {
+                window.location.href = '/dashboard';
+            }
+        });
+        
+        document.getElementById('user-name').focus();
+    </script>
+</body>
+</html>
